@@ -18,7 +18,7 @@ docker build . -f Dockerfile.init -t reactdockerstarter
 
 ### 3. Create react project
 
-docker run -it --rm -v ${PWD}/reactdockerstarter:/app  reactdockerstarter npx create-react-app .
+docker run -it --rm -v ${PWD}/reactdockerstarter:/app reactdockerstarter npx create-react-app .
 
 ### 4. Change app folder permissions - probably owned by root
 
@@ -49,8 +49,8 @@ CMD bash
 
 \#!/usr/bin/env bash
 APP_NAME=reactdockerstarter
-docker build . -f Dockerfile -t ${APP_NAME} && \
-docker run -it --rm -v ${PWD}:/app -v ${APP_NAME}_nodemodules:/app/node_modules --network host ${APP_NAME} $@
+docker build . -f Dockerfile -t $APP_NAME && \
+docker run --name react-docker-starter -it -p 7000:7000 --rm -v ${PWD}:/app -v ${APP_NAME}_nodemodules:/app/node_modules $APP_NAME $@
 
 bash start.sh yarn create react-app .
 
