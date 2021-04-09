@@ -52,18 +52,20 @@ APP_NAME=reactdockerstarter
 docker build . -f Dockerfile -t $APP_NAME && \
 docker run --name react-docker-starter -it -p 7000:7000 --rm -v ${PWD}:/app -v ${APP_NAME}_nodemodules:/app/node_modules $APP_NAME $@
 
+### 3. Install env again
+
 bash start.sh yarn create react-app .
 
-### 2. Run environment
+### 4. Run environment
 
 bash start.sh yarn start
 
-### 3. Edit reactdockerstarter/src/App.js and enjoy the automatic reloading
+### 5. Edit reactdockerstarter/src/App.js and enjoy the automatic reloading
 
 vim reactdockerstarter/src/App.js
 
 
-## Maintenance commands
+## Maintenance
 
 ### 1. Add some library
 
@@ -77,3 +79,9 @@ bash run.sh yarn build
 
 docker image rm reactdockerstarter
 docker volume rm reactdockerstarter_nodemodules
+
+Overal Docker cleanup
+
+docker network prune
+docker volume prune
+docker image prune
