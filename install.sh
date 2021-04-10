@@ -9,5 +9,5 @@ sudo chown -R ${USER} ${APP_NAME}
 
 # Development config (node_modules only inside dockr)
 rm -rf node_modules
-bash -x start.sh yarn create ${APP_NAME} .
+bash -x start.sh yarn run create-react-app ..
 bash -x start.sh yarn start
