@@ -4,6 +4,7 @@
 
 APP_NAME=reactapp
 
+docker stop ${APP_NAME}
 docker image rm ${APP_NAME}
 docker volume rm ${APP_NAME}_nodemodules
-rm -rf ./${APP_NAME}
+rm -rf ${APP_NAME}
